@@ -1,0 +1,41 @@
+{% extends 'SkyGate/base.html' %}
+{% block body %}
+
+<div class="objects-container container-fluid">
+
+    <!-- Albums -->
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>List of objects</h3>
+        </div>
+        {% if all_objects %}
+            {% for object in all_objects %}
+                <div class="col-sm-4 col-lg-2">
+
+                        <div class="caption">
+                            <h2>{{ object.example_object }}</h2>
+
+                            <!-- Edit Model -->
+                            <a href="{% url 'SkyGate:object-update' object.id %}" class="btn btn-default btn-sm" role="button">Edit object</a>
+
+                             <!--Delete Model -->
+                            <form action="{% url 'SkyGate:object-delete' object.id %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="object_id" value="{{ object.id }}" />
+                                <button type="submit" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </form>
+                        </div>
+                </div>
+                <!--{% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}-->
+            {% endfor %}
+        {% else %}
+
+        <h3>You dont have any objects</h3>
+
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
