@@ -1,3 +1,3 @@
 1. Copy django-skygate folder into your project's folder.
-2. Install SkyGate module by running 'pip install --user django-skygate/dist/django-skygate-0.1.tar.gz'
+2. Install SkyGate module by running 'pip install --user django-skygate-master/dist/django-skygate-0.1.tar.gz'
 3. Read README file
